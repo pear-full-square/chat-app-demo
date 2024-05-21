@@ -6,6 +6,8 @@ Taken from the example described here: https://docs.pears.com/guides/making-a-pe
 This example create a swarm where messages entered in input are send / broadcast to all peers in the swarm.  
 There is no persistence of the messages.
 
+## Running in DEV mode
+
 Start multiple chat windows by repeating the following command (it uses a preset topic name)
 ```bash
 gnome-terminal -- ./chat.sh

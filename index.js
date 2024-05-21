@@ -11,6 +11,7 @@ const { teardown, config } = Pear    // Import configuration options and cleanup
 const key = config.args.pop()       // Retrieve a potential chat room key from command-line arguments
 const shouldCreateSwarm = !key      // Flag to determine if a new chat room should be created
 const swarm = new Hyperswarm()
+console.log('SWARM KEYPAIR:', b4a.toString(swarm.keyPair.publicKey, 'hex').substr(0, 6))
 
 // Unannounce the public key before exiting the process
 // (This is not a requirement, but it helps avoid DHT pollution)

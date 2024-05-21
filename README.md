@@ -6,9 +6,12 @@ Taken from the example described here: https://docs.pears.com/guides/making-a-pe
 This example create a swarm where messages entered in input are send / broadcast to all peers in the swarm.  
 There is no persistence of the messages.
 
-Start a chat window with the following command (it uses a preset topic name)
+Start multiple chat windows by repeating the following command (it uses a preset topic name)
 ```bash
 gnome-terminal -- ./chat.sh
 ```
-You can create your own topic name with ```pear dev . ```
+To create a new topic name execute ```pear dev . ```.
 
+A message entered by a chat window is broadcast to all peers.  
+Closing chat windows does not remove it from the connection list of the other peers.  
+Removal happens on next (failed) delivery of a message.

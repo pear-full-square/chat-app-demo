@@ -10,8 +10,11 @@ import tty from 'bare-tty'            // Module to control terminal behavior
 const { teardown, config } = Pear    // Import configuration options and cleanup functions from Pear
 const key = config.args.pop()       // Retrieve a potential chat room key from command-line arguments
 const shouldCreateSwarm = !key      // Flag to determine if a new chat room should be created
+
+// Create the local swarm and set the peer name
 const swarm = new Hyperswarm()
-console.log('SWARM KEYPAIR:', b4a.toString(swarm.keyPair.publicKey, 'hex').substr(0, 6))
+const myName = b4a.toString(swarm.keyPair.publicKey, 'hex').substr(0, 6)
+console.log('[info] My Peer Identifier: ', myName)
 
 // Unannounce the public key before exiting the process
 // (This is not a requirement, but it helps avoid DHT pollution)

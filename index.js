@@ -63,7 +63,7 @@ async function createChatRoom () {
 async function joinChatRoom (topicStr) {
   const topicBuffer = b4a.from(topicStr, 'hex')
   await joinSwarm(topicBuffer)
-  console.log(`[info] Joined chat room`)
+  console.log(`[info] Joined chat room: ${topicStr}`)
 }
 
 async function joinSwarm (topicBuffer) {

@@ -1,5 +1,12 @@
-/* global Pear */
+/* Uncomment this code to debug in dev - first install pear-inspect 
+if (Pear.config.dev) {
+  const { Inspector } = await import('pear-inspect')
+  const inspector = await new Inspector()
+  const key = await inspector.enable()
+  console.log(`Debug with pear://runtime/devtools/${key.toString('hex')}`)
+} */
 
+/* global Pear */
 import Hyperswarm from 'hyperswarm'   // Module for P2P networking and connecting peers
 import b4a from 'b4a'                 // Module for buffer-to-string and vice-versa conversions 
 import crypto from 'hypercore-crypto' // Cryptographic functions for generating the key in app

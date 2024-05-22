@@ -160,3 +160,27 @@ pear stage production
 pear release production
 ```
 To allow other peers access to the new release, have ```pear seed production``` running.
+
+## Debugging the app
+
+Uncomment the debug code at the top of the index.js file and install the package.  
+This code must be the first item to run.
+
+As the code specifies, pear-inspect is only running when in dev mode, so start the app:
+```bash
+pear dev .
+```
+
+The application will output something similar to:
+```bash
+Debug with pear://runtime/devtools/a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2
+```
+
+Start the debugger with the key:
+```bash
+pear run pear://runtime/devtools/a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2
+```
+In __Pear__ Desktop go to Developer Tooling and paste in the key.
+Note that the key can also be sent to someone else and they can debug the app remotely.
+
+Click on Open in Chrome or copy the link into a tool that support DevTools.

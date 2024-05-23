@@ -1,9 +1,9 @@
 # chat-app-demo
 
-The holepunchto chat-app example revisited.  
+Leg 2 of the journey, the terminal chat-app example revisited. Contains a Pear app life cycle walk-through.  
 The original example is here: https://docs.pears.com/guides/making-a-pear-terminal-app.
 
-This example create a swarm where messages entered in input are send / broadcast to all peers in the swarm.  
+This example create a swarm where messages entered in one chat-app are send / broadcast to all peers in the swarm.  
 There is no persistence of the messages.
 
 ## Running in DEV mode
@@ -35,11 +35,11 @@ Type something in one of the app windows. The two apps are now connected peer-to
 
 ### Test Run 2
 
-Start multiple chat apps by repeating the following command (it uses a preset topic name)
-```bash
-gnome-terminal -- ./chat.sh
-```
-It is not necessary to create a new topic, but if other/multiple users were to use the same topic then the chat apps across those users would be in the same swarm.
+*** LINUX ONLY ***  
+For the first chat app instance, execute ```./_pear_dev``` from the root of the project folder.  
+For subsequent chat app instances, execute ```./_pear_dev_chat```.  
+Each instance opens in a new terminal. The first chat instance sets the new topic name in the __chat.sh_ file.  
+*** LINUX ONLY ***
 
 When multiple chat apps for the same topic are created on a machine with no internet access then they won't join into a swarm.  
 The apps discover each other through the swarm of the __Pear__ application which is bootstrapped with external servers.  

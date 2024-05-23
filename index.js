@@ -5,8 +5,8 @@ if (Pear.config.dev) {
   const key = await inspector.enable()
   console.log(`Debug with pear://runtime/devtools/${key.toString('hex')}`)
 } */
-
 /* global Pear */
+import Localdrive from 'localdrive'  // Module to interact with the local filesystem
 import Hyperswarm from 'hyperswarm'   // Module for P2P networking and connecting peers
 import b4a from 'b4a'                 // Module for buffer-to-string and vice-versa conversions 
 import crypto from 'hypercore-crypto' // Cryptographic functions for generating the key in app
@@ -65,7 +65,15 @@ async function createChatRoom () {
   await joinSwarm(topicBuffer)
   const topic = b4a.toString(topicBuffer, 'hex')
   console.log(`[info] Created new chat room: ${topic}`)
-}
+  const drive = new Localdrive('.')
+  const command = 'pear dev . ' + topic
+  if(config.dev) {
+    console.log('Updating _chat.sh file with new key')
+    await drive.put('/_chat.sh', Buffer.from(command),{ executable: true })
+    await drive.put('/_pear_dev', Buffer.from('gnome-terminal -- pear dev .'),{ executable: true })
+    await drive.put('/_pear_dev_chat', Buffer.from('gnome-terminal -- ./_chat.sh'),{ executable: true })
+  }
+ }
 
 async function joinChatRoom (topicStr) {
   const topicBuffer = b4a.from(topicStr, 'hex')

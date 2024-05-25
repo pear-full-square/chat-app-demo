@@ -53,8 +53,8 @@ if (shouldCreateSwarm) {
 
 rl.input.setMode(tty.constants.MODE_RAW) // Enable raw input mode for efficient key reading
 rl.on('data', line => {
-  sendMessage(line)
-  rl.prompt()
+  if(line==='.exit') { rl.input.setMode(tty.constants.MODE_NORMAL); console.log('\nPress Crtl^C and ENTER'); }
+  else { sendMessage(line); rl.prompt(); }
 })
 rl.prompt()
 
@@ -64,7 +64,7 @@ async function createChatRoom () {
   // Create a new chat room for the topic
   await joinSwarm(topicBuffer)
   const topic = b4a.toString(topicBuffer, 'hex')
-  console.log(`[info] Created new chat room: ${topic}`)
+  console.log(`[info] Created new chat room: ${topic} - Enter .exit to exit`)
   const drive = new Localdrive('.')
   const command = 'pear dev . ' + topic
   if(config.dev) {
@@ -78,7 +78,7 @@ async function createChatRoom () {
 async function joinChatRoom (topicStr) {
   const topicBuffer = b4a.from(topicStr, 'hex')
   await joinSwarm(topicBuffer)
-  console.log(`[info] Joined chat room: ${topicStr}`)
+  console.log(`[info] Joined chat room: ${topicStr} - Enter .exit to exit`)
 }
 
 async function joinSwarm (topicBuffer) {

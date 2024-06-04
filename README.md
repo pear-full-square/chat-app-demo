@@ -1,6 +1,6 @@
 # chat-app-demo
 
-Leg 2 of the journey, the terminal chat-app example revisited. Contains a Pear app life cycle walk-through.  
+The pear terminal chat-app example revisited. Contains a Pear app life cycle walk-through.  
 The original example is here: https://docs.pears.com/guides/making-a-pear-terminal-app.
 
 This example create a swarm where messages entered in one chat-app are send / broadcast to all peers in the swarm.  
